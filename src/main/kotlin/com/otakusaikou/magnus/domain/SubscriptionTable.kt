@@ -1,10 +1,7 @@
 package com.otakusaikou.magnus.domain
 
 import java.net.URL
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.ManyToMany
+import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -14,8 +11,9 @@ class SubscriptionTable(
         @NotNull
         @org.hibernate.validator.constraints.URL
         val url: URL,
-        @ManyToMany(mappedBy = "subscriptionTable")
-        val userTables: Set<UserTable>? = null,
+        @ManyToMany(cascade = [CascadeType.ALL])
+        @JoinTable
+        val categoryTable: Set<CategoryTable?>? = null,
         @Id
         @GeneratedValue
         val id: Long? = null
