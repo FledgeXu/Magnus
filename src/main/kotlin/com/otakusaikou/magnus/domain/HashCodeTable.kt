@@ -1,6 +1,5 @@
 package com.otakusaikou.magnus.domain
 
-import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -12,11 +11,7 @@ import javax.validation.constraints.NotNull
 @Entity
 class HashCodeTable(
         @NotNull
-        @Column(columnDefinition = "TEXT")
-        val salt1: String,
-        @NotNull
-        @Column(columnDefinition = "TEXT")
-        val salt2: String,
+        val salt1: ByteArray,
         @Id
         @GeneratedValue
         val id: Long? = null

@@ -10,7 +10,7 @@ class UserTable(
         @NotNull
         val userName: String,
         @NotNull
-        val name: String,
+        val nickName: String,
         @NotNull
         val hashedPassword: ByteArray,
         @OneToOne(cascade = [CascadeType.ALL])
