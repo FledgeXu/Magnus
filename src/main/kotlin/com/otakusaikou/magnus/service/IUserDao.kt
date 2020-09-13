@@ -8,9 +8,10 @@ interface IUserDao {
     fun deleteUser(userName: String): Boolean
     fun findUser(userName: String): UserTable?
     fun validateUser(userName: String, inputPassword: ByteArray): Boolean
-    fun getLoginInfo(userName: String): ByteArray
+    fun getLoginSalt(userName: String): ByteArray
     fun changePassword(userName: String, oldPassword: ByteArray, newPassword: ByteArray): Boolean
     fun changeNickName(userName: String, password: ByteArray, newNickName: String): Boolean
     fun changePermission(userName: String, password: ByteArray, isAdmin: Boolean): Boolean
     fun isPermission(userName: String): Boolean
+    fun deleteAll(): Boolean
 }

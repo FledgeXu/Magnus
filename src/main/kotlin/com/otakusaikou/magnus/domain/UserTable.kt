@@ -16,7 +16,7 @@ class UserTable(
         @OneToOne(cascade = [CascadeType.ALL])
         val hashCodeTable: HashCodeTable,
         @NotNull
-        val isAdmin: Boolean,
+        val isAdmin: Boolean = false,
         @JsonIgnoreProperties(value = ["userTables"])
         @ManyToMany(cascade = [CascadeType.ALL])
         @JoinTable()

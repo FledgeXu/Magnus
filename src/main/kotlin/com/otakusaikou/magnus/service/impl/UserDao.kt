@@ -38,7 +38,7 @@ class UserDao @Autowired constructor(val userTableRepository: IUserTableReposito
         return (findUser(userName)?.hashedPassword?.contentEquals(inputPassword)) ?: false
     }
 
-    override fun getLoginInfo(userName: String): ByteArray {
+    override fun getLoginSalt(userName: String): ByteArray {
         return userTableRepository.findByUserName(userName)?.hashCodeTable?.salt1 ?: ByteArray(0)
     }
 
@@ -79,5 +79,10 @@ class UserDao @Autowired constructor(val userTableRepository: IUserTableReposito
 
     override fun isPermission(userName: String): Boolean {
         return userTableRepository.findByUserName(userName)?.isAdmin ?: false
+    }
+
+    override fun deleteAll(): Boolean {
+        userTableRepository.deleteAll()
+        return true
     }
 }
